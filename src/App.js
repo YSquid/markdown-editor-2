@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import ReactMarkdown from 'react-markdown'
+import styled from 'styled-components'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+  const [inputValue, setInputValue] = useState('')
+
+  useEffect (() => {
+      setInputValue(
+        '# Hi, this is the default text'
+      )
+
+  },[])
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value)
+  }
+
+  return (
+    <div>
+    <textarea value={inputValue} onChange={handleChange} />
+    <ReactMarkdown>{inputValue}</ReactMarkdown>
+    </div>
+    
+    
+  )
+}
 export default App;
