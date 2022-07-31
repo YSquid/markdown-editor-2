@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 
@@ -20,10 +21,11 @@ function App() {
   }
 
   return (
-    <div>
-    <textarea value={inputValue} onChange={handleChange} />
-    <ReactMarkdown>{inputValue}</ReactMarkdown>
-    </div>
+    <div className='card'>
+      <textarea className ='card' value={inputValue} onChange={handleChange} />
+      <ReactMarkdown>{inputValue}</ReactMarkdown>
+  </div>
+    
     
     
   )
