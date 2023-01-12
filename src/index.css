@@ -1,7 +1,32 @@
-.card-body {
-  background-color: rgb(223, 247, 213);
+.App {
+  display: flex;
+  box-sizing: border-box;
+  height: 100vh;
 }
 
-.card-title {
-  background-color: lightgreen;
+#editor {
+  width: 50%;
+  height: inherit;
+  padding: 2rem;
 }
+
+#previewer {
+  width: 50%;
+  height: inherit;
+  padding: 2rem;
+}
+
+textarea {
+ height: 140vh;
+}
+
+
+.card-text {
+  padding: 1rem;
+  outline: none;
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid black;
+  overflow: hidden;
+}
+

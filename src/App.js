@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import styled from 'styled-components'
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css'
-
-
+import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "bootstrap/dist/css/bootstrap.css";
+import "./index.css";
 
 function App() {
-
-  const defaultPreview = 
-`# H1
+const defaultPreview = `# H1
 ## H2
 ### H3
 
@@ -18,8 +13,6 @@ Here is a link to [Google](https://google.com)
 
 Here is some \`inline code\`
 
-  this is a 
-    simple indented code block
 
 \`\`\`
 This is a fenced code block
@@ -47,40 +40,41 @@ Here is an image of a penguin!
 
 
 
-`
+`;
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState("");
 
-  useEffect (() => {
-      setInputValue(
-        defaultPreview
-      )
-
-  },[])
+  useEffect(() => {
+    setInputValue(defaultPreview);
+  },[defaultPreview]);
 
   const handleChange = (event) => {
-    setInputValue(event.target.value)
-  }
+    setInputValue(event.target.value);
+  };
 
   return (
-    <div id='wrapper'>
-
+    <div id="wrapper" className="App">
       {/*notice that the card title is in the same context as card-text (both inside card-body)*/}
-      <div id='input-card' className='card-body'>
-      <h2 className='card-title'>Editor</h2>
-        <textarea className ='card-text' value={inputValue} onChange={handleChange} />
+      <div id="editor" className="card-body">
+        <h2 className="card-title">Editor</h2>
+        <div class="grow-wrap">
+        <textarea
+          className="card-text"
+          value={inputValue}
+          onChange={handleChange}
+          onInput="this.parentNode.dataset.replicatedValue = this.value"
+          spellcheck='true'
+        />
+        </div>
       </div>
 
-      <div id='preview-card' className='card-body'>
-        <h2 className='card-title'>Markdown Preview</h2>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} className='card-text'>{inputValue}</ReactMarkdown>
+      <div id="previewer" className="card-body">
+        <h2 className="card-title">Markdown Preview</h2>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} className="card-text">
+          {inputValue}
+        </ReactMarkdown>
       </div>
-
-
-  </div>
-    
-    
-    
-  )
+    </div>
+  );
 }
 export default App;
